@@ -13,6 +13,8 @@ const Restaurants = props => {
 
     const [restaurant, setRestaurant] = useState(initialRestaurantState);
 
+
+
     const getRestaurant = id => {
         RestaurantDataService.get(id)
             .then(response => {
@@ -68,7 +70,7 @@ const Restaurants = props => {
                              <strong>User: </strong>{review.name}<br/>
                              <strong>Date: </strong>{review.date}
                            </p>
-                           {props.user && props.user.email === review.user_email &&
+                           {props.user.nickname  === review.name &&
                               <div className="row">
                                 <a onClick={() => deleteReview(review._id, index)} className="btn btn-primary col-lg-5 mx-1 mb-1">Delete</a>
                                 <Link to={{
