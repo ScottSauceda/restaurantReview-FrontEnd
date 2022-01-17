@@ -55,7 +55,7 @@ const AddReview = props => {
 
   return (
     <div>
-      {props.user ? (
+      {isAuthenticated ? (
       <div className="submit-form">
         {submitted ? (
           <div>
