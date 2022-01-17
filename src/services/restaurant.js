@@ -14,15 +14,15 @@ class RestaurantDataService {
     }
 
     createReview(data) {
-        return http.post("/review", data);
+        return http.post("/review-new", data);
     }
 
     updateReview(data) {
-        return http.put("/review", data);
+        return http.put("/review-edit", data);
     }
 
     deleteReview(id, userEmail) {
-        return http.delete(`/review?id=${id}`, {data: {user_email: userEmail}});
+        return http.delete(`/review-delete?id=${id}`, {data: {user_email: userEmail}});
     }
 
     getCuisines(id) {
