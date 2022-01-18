@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import RestaurantDataService from "../services/restaurant"
 import { Link } from "react-router-dom";
 
+import { useAuth0 } from '@auth0/auth0-react';
+
 const Restaurants = props => {
     const initialRestaurantState = {
         id: null,
@@ -11,8 +13,21 @@ const Restaurants = props => {
         reviews: []
     };
 
+    const { user, isAuthenticated } = useAuth0;
+
+    // console.log('props.user', props.user);
+
+    // console.log('user', user);
+    // if(user !== ""){
+    //   if(user.name  === review.email){
+
+    //   }
+    // }
+    
+
     const [restaurant, setRestaurant] = useState(initialRestaurantState);
 
+    // var usersEmail = props.user.email;
 
 
     const getRestaurant = id => {
@@ -70,17 +85,25 @@ const Restaurants = props => {
                              <strong>User: </strong>{review.name}<br/>
                              <strong>Date: </strong>{review.date}
                            </p>
-                           {props.user.nickname  === review.name &&
-                              <div className="row">
+                           <div className="row">
+                             { props.user ? (
+                              <div>
+                                { props.user.name  == review.user_email &&
+                                <div> 
                                 <a onClick={() => deleteReview(review._id, index)} className="btn btn-primary col-lg-5 mx-1 mb-1">Delete</a>
                                 <Link to={{
                                   pathname: "/restaurants/" + props.match.params.id + "/review",
                                   state: {
                                     currentReview: review
                                   }
-                                }} className="btn btn-primary col-lg-5 mx-1 mb-1">Edit</Link>
-                              </div>                   
-                           }
+                                }} className="btn btn-primary col-lg-5 mx-1 mb-1">Edit</Link>    
+                                </div>              
+                               }
+                              </div>
+                             ) : (
+                               <p></p>
+                             )}
+                           </div>
                          </div>
                        </div>
                      </div>
