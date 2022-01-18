@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AddReview from "./components/add-review";
 import Restaurant from "./components/restaurants";
 import RestaurantsList from "./components/restaurants-list";
-import Profile from './components/Profile';
+// import Profile from './components/Profile';
 import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
@@ -41,7 +41,7 @@ function App() {
       </nav>
 
       <div className="container mt-3">
-        <Profile />
+        {/* <Profile /> */}
         <Switch>
           <Route exact path={["/", "/restaurants"]} component={RestaurantsList} />
           <Route 
