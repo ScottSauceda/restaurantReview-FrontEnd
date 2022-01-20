@@ -78,6 +78,7 @@ const AddReview = props => {
                 name="text"
               />
             </div>
+            <br></br>
             <button onClick={saveReview} className="btn btn-success">
               Submit
             </button>
