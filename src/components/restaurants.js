@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import RestaurantDataService from "../services/restaurant"
 import { Link } from "react-router-dom";
 
-// import { useAuth0 } from '@auth0/auth0-react';
 
 const Restaurants = props => {
     const initialRestaurantState = {
@@ -11,23 +10,10 @@ const Restaurants = props => {
         address: {},
         cuisine: "",
         reviews: []
-    };
-
-    // const { user, isAuthenticated } = useAuth0;
-
-    // console.log('props.user', props.user);
-
-    // console.log('user', user);
-    // if(user !== ""){
-    //   if(user.name  === review.email){
-
-    //   }
-    // }
-    
+    };    
 
     const [restaurant, setRestaurant] = useState(initialRestaurantState);
 
-    // var usersEmail = props.user.email;
 
 
     const getRestaurant = id => {
