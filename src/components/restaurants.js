@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import RestaurantDataService from "../services/restaurant"
 import { Link } from "react-router-dom";
 
-import { useAuth0 } from '@auth0/auth0-react';
+// import { useAuth0 } from '@auth0/auth0-react';
 
 const Restaurants = props => {
     const initialRestaurantState = {
@@ -13,7 +13,7 @@ const Restaurants = props => {
         reviews: []
     };
 
-    const { user, isAuthenticated } = useAuth0;
+    // const { user, isAuthenticated } = useAuth0;
 
     // console.log('props.user', props.user);
 
@@ -34,7 +34,7 @@ const Restaurants = props => {
         RestaurantDataService.get(id)
             .then(response => {
                 setRestaurant(response.data);
-                console.log(response.data);
+                // console.log(response.data);
             })
             .catch(e => {
                 console.log(e);
@@ -88,9 +88,9 @@ const Restaurants = props => {
                            <div className="row">
                              { props.user ? (
                               <div>
-                                { props.user.name  == review.user_email &&
+                                { props.user.name  === review.user_email &&
                                 <div> 
-                                <a onClick={() => deleteReview(review._id, index)} className="btn btn-primary col-lg-5 mx-1 mb-1">Delete</a>
+                                <a onClick={() => deleteReview(review._id, index)} href=""className="btn btn-primary col-lg-5 mx-1 mb-1">Delete</a>
                                 <Link to={{
                                   pathname: "/restaurants/" + props.match.params.id + "/review",
                                   state: {

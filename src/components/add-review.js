@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import RestaurantDataService from "../services/restaurant";
 import { Link } from "react-router-dom";
-import { useAuth0 } from '@auth0/auth0-react';
+// import { useAuth0 } from '@auth0/auth0-react';
 
 const AddReview = props => {
-  const { user, isAuthenticated } = useAuth0;
+  // const { user, isAuthenticated } = useAuth0;
 
   let initialReviewState = ""
 

@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AddReview from "./components/add-review";
 import Restaurant from "./components/restaurants";
 import RestaurantsList from "./components/restaurants-list";
-// import Profile from './components/Profile';
 import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
@@ -27,11 +26,11 @@ function App() {
           </li>
           <li className="nav-item" >
             { isAuthenticated ? (
-              <a onClick={()  => logout()} className="nav-link" style={{cursor:'pointer'}}>
+              <a onClick={()  => logout()} className="nav-link" href=""  style={{cursor:'pointer'}}>
                 Logout {user.nickname}
               </a>
             ) : (            
-              <a onClick={() => loginWithRedirect()} className="nav-link" style={{cursor:'pointer'}}>
+              <a onClick={() => loginWithRedirect()} className="nav-link"  href="" style={{cursor:'pointer'}}>
                 Log In
               </a>
             )}
@@ -41,10 +40,9 @@ function App() {
       </nav>
 
       <div className="container mt-3">
-        {/* <Profile /> */}
         <Switch>
-          <Route exact path={["/", "/restaurants"]} component={RestaurantsList} />
-          <Route 
+          <Route exact path={["/", "/restaurants"]} component={RestaurantsList}  />
+          <Route
             path="/restaurants/:id/review"
             render={(props) => (
               <AddReview {...props} user={user} />

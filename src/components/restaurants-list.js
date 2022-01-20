@@ -8,6 +8,8 @@ const RestaurantsList = props => {
   const [searchCuisine, setSearchCuisine ] = useState("");
   const [cuisines, setCuisines] = useState(["All Cuisines"]);
 
+  var i = 0;
+
   useEffect(() => {
     retrieveRestaurants();
     retrieveCuisines();
@@ -28,7 +30,6 @@ const RestaurantsList = props => {
   const retrieveRestaurants = () => {
     RestaurantDataService.getAll()
       .then(response => {
-        console.log(response.data);
         setRestaurants(response.data.restaurants);
         
       })
@@ -40,7 +41,6 @@ const RestaurantsList = props => {
   const retrieveCuisines = () => {
     RestaurantDataService.getCuisines()
       .then(response => {
-        console.log(response.data);
         setCuisines(["All Cuisines"].concat(response.data));
         
       })
@@ -56,7 +56,7 @@ const RestaurantsList = props => {
   const find = (query, by) => {
     RestaurantDataService.find(query, by)
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         setRestaurants(response.data.restaurants);
       })
       .catch(e => {
@@ -70,7 +70,7 @@ const RestaurantsList = props => {
 
 
   const findByCuisine = () => {
-    if (searchCuisine == "All Cuisines") {
+    if (searchCuisine === "All Cuisines") {
       refreshList();
     } else {
       find(searchCuisine, "cuisine")
@@ -103,7 +103,7 @@ const RestaurantsList = props => {
           <select onChange={onChangeSearchCuisine}>
              {cuisines.map(cuisine => {
                return (
-                 <option value={cuisine}> {cuisine.substr(0, 20)} </option>
+                 <option key = {i++} value={cuisine} > {cuisine.substr(0, 20)} </option>
                )
              })}
           </select>
@@ -119,11 +119,11 @@ const RestaurantsList = props => {
 
         </div>
       </div>
-      <div className="row">
+      <div className="row" >
         {restaurants.map((restaurant) => {
           const address = `${restaurant.address.building} ${restaurant.address.street}, ${restaurant.address.zipcode}`;
           return (
-            <div className="col-lg-4 pb-1">
+            <div className="col-lg-4 pb-1" key = {i++}>
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">{restaurant.name}</h5>
